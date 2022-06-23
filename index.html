@@ -1,0 +1,475 @@
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    header {
+        background-image: url('title-blur.jpg');
+        background-position: center;
+        background-size: cover;
+        height: 50%;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        padding: 60px 10%;
+    }
+  
+    body {
+        background:#dfe6e9;
+    }
+
+    .card {
+        margin-bottom: 20;
+    }
+
+    .timeline {
+      border-left: 3px solid #727cf5;
+      border-bottom-right-radius: 4px;
+      border-top-right-radius: 4px;
+      background: rgba(114, 124, 245, 0.09);
+      margin: 0 auto;
+      letter-spacing: 0.2px;
+      position: relative;
+      line-height: 1.4em;
+      font-size: 1.03em;
+      padding: 50px;
+      list-style: none;
+      text-align: left;
+      max-width: 40%;
+  }
+
+  @media (max-width: 767px) {
+      .timeline {
+          max-width: 98%;
+          padding: 25px;
+      }
+  }
+
+  .timeline h1 {
+      font-weight: 300;
+      font-size: 1.4em;
+  }
+
+  .timeline h2,
+  .timeline h3 {
+      font-weight: 600;
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+  }
+
+  .timeline .event {
+      border-bottom: 1px dashed #e8ebf1;
+      background-color:0 0 0 3px #727cf5;
+      padding-bottom: 25px;
+      margin-bottom: 25px;
+      position: relative;
+  }
+
+  @media (max-width: 767px) {
+      .timeline .event {
+          padding-top: 30px;
+      }
+  }
+
+  .timeline .event:last-of-type {
+      padding-bottom: 0;
+      margin-bottom: 0;
+      border: none;
+  }
+
+  .timeline .event:before,
+  .timeline .event:after {
+      position: absolute;
+      display: block;
+      top: 0;
+  }
+
+  .timeline .event:before {
+      left: -207px;
+      content: attr(data-date);
+      text-align: right;
+      font-weight: 100;
+      font-size: 0.9em;
+      min-width: 120px;
+  }
+
+  @media (max-width: 767px) {
+      .timeline .event:before {
+          left: 0px;
+          text-align: left;
+      }
+  }
+
+  .timeline .event:after {
+      -webkit-box-shadow: 0 0 0 3px #727cf5;
+      box-shadow: 0 0 0 3px #727cf5;
+      left: -55.8px;
+      background: #fff;
+      border-radius: 50%;
+      height: 9px;
+      width: 9px;
+      content: "";
+      top: 5px;
+  }
+
+  @media (max-width: 767px) {
+      .timeline .event:after {
+          left: -31.8px;
+      }
+  }
+
+  .rtl .timeline {
+      border-left: 0;
+      text-align: right;
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
+      border-bottom-left-radius: 4px;
+      border-top-left-radius: 4px;
+      border-right: 3px solid #727cf5;
+  }
+
+  .rtl .timeline .event::before {
+      left: 0;
+      right: -170px;
+  }
+
+  .rtl .timeline .event::after {
+      left: 0;
+      right: -55.8px;
+  }
+
+  .collapsible {
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+  }
+
+  .active, .collapsible:hover {
+    background-color: rgb(255, 255, 255);
+  }
+
+  .content {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #f9f6f6f4;
+  }
+
+  .timeline-item {
+    text-align: justify;
+    font-size: 14px;
+  }
+
+  .reveal{
+    transform: translateX(150px);
+    opacity: 0;
+    transition: 1s all ease;
+  }
+
+  .reveal.active {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+
+</style>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mak Sui Ling Angela</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-avatar@latest/dist/avatar.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    </head>
+    <body>
+        <div>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">Mak Sui Ling Angela</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarScroll">
+                    <ul class="navbar-nav my-2 my-lg-0" style="--bs-scroll-height: 100px;">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#education">Education</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#projects">Projects</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#experience">Experience</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#activity">Activity</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#skills">Skills</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <header style="margin-bottom: 20;">
+            <img 
+                class="avatar avatar-96 bg-light rounded-circle text-white p-2"
+                src="https://raw.githubusercontent.com/twbs/icons/main/icons/person-fill.svg"
+                style="margin-top:20"
+            >
+            <h3 style="margin: top 20;">Mak Sui Ling Angela</h3>
+            <p class="lead">Hello, I am an undergraduate student from CUHK</p>
+            <button type="button" class="btn btn-success">Download Resume (Currently not avaliable)</button>
+        </header>
+        <div class="container">
+            <div class="card" style="margin: top 30px;" id="about">
+                <h4 class="card-header">
+                  About
+                </h4>
+                <div class="card-body">
+                  <h5 class="card-title">Special title treatment</h5>
+                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                </div>
+            </div>
+
+            <div class="card" style="margin: top 30px;" id="education">
+                <h4 class="card-header">
+                  Education
+                  <i class='fas fa-graduation-cap'></i>
+                </h4>
+                <div class="card-body">
+                  <h4 class="card-title">The Chinese University of Hong Kong <br>
+                    <I>2018 Sep. - 2022 July</I>
+                    <h6><I>Major in BEng in Information Engineering and Minor in BSc in Computer Science</I></h6>
+                  </h4>
+                  <br>
+                  <h5 class="card-text">Major GPA: 3.42 / 4.00</h5>
+                  <br>
+                  <h5 class="card-text">Streams of Specializations:</h5>
+                    <div>
+                      <button type="button" class="collapsible btn btn-outline-primary">Cyber Security<i class="bi bi-caret-down-fill" style="margin-left: 10"></i></button>
+                      <div class="content">
+                        <h6 class="card-text" style="margin:5">Related Course</h6>
+                        <ul class="list-group" style="margin:5">
+                          <li class="list-group-item">CSCI3150 Introduction to Operating System</li>
+                          <li class="list-group-item">IERG4130 Introduction to Cyber Seucirty</li>
+                          <li class="list-group-item">IERG4210 Web Programming and Security</li>
+                          <li class="list-group-item">IERG4220 Secure Software Engineering</li>
+                          <li class="list-group-item">IERG4350 Cloud Computing Seucirty</li>
+                        </ul>
+                      </div>
+                      <button type="button" class="collapsible btn btn-outline-primary">Internet Engineering<i class="bi bi-caret-down-fill" style="margin-left: 10"></i></button>
+                      <div class="content">
+                        <h6 class="card-text" style="margin:5">Related Course</h6>
+                        <ul class="list-group" style="margin:5">
+                          <li class="list-group-item">CSCI3150 Introduction to Operating System</li>
+                          <li class="list-group-item">IERG4090 Networking Protocols and Systems</li>
+                          <li class="list-group-item">IERG4130 Introduction to Cyber Security</li>
+                          <li class="list-group-item">IERG4210 Web Programming and Security</li>
+                          <li class="list-group-item">IERG4831 Networking Lab I</li>
+                          <li class="list-group-item">IERG4831 Networking Lab II</li>
+                        </ul>
+                      </div>
+                      <button type="button" class="collapsible btn btn-outline-primary">Big Data: Systems and Applications<i class="bi bi-caret-down-fill" style="margin-left: 10"></i></button>
+                      <div class="content">
+                        <h6 class="card-text" style="margin:5">Related Course</h6>
+                        <ul class="list-group" style="margin:5">
+                          <li class="list-group-item">IERG3320 Social Media and Human Information Interaction</li>
+                          <li class="list-group-item">IERG4160 Image and Video Processing</li>
+                          <li class="list-group-item">IERG4230 Introduction to Internet of Things</li>
+                          <li class="list-group-item">IERG4300 Web-scale Information Analytics</li>
+                        </ul>
+                      </div>
+                    </div>
+                  <br>
+                  <h5 class="card-text">Non-stream Courses:</h5>
+                  <div>
+                    <button type="button" class="collapsible btn btn-outline-success">Programming and Software Development<i class="bi bi-caret-down-fill" style="margin-left: 10"></i></button>
+                    <div class="content">
+                      <ul class="list-group" style="margin:5">
+                        <li class="list-group-item">CSCI1120 Introduction to Computing using C++</li>
+                        <li class="list-group-item">CSCI2720 Building Web Applications</li>
+                        <li class="list-group-item">CSCI2100 Data Structure</li>
+                        <li class="list-group-item">IERG2080 Introduction to System Programming</li>
+                        <li class="list-group-item">IERG3080 Information and Software Engineering Practice</li>
+                      </ul>
+                    </div>
+                    <button type="button" class="collapsible btn btn-outline-success">Network and Infrastructure<i class="bi bi-caret-down-fill" style="margin-left: 10"></i></button>
+                    <div class="content">
+                      <ul class="list-group" style="margin:5">
+                        <li class="list-group-item">IERG2602 Engineering Practicum</li>
+                        <li class="list-group-item">IERG3310 Computer Networks</li>
+                        <li class="list-group-item">IERG3800 Information Infrastructure Design Lab</li>
+                      </ul>
+                    </div>
+                    <button type="button" class="collapsible btn btn-outline-success">Other<i class="bi bi-caret-down-fill" style="margin-left: 10"></i></button>
+                    <div class="content">
+                      <ul class="list-group" style="margin:5">
+                        <li class="list-group-item">ENGG1100 Introduction to Engineering Design</li>
+                        <li class="list-group-item">IERG2051 Signals and Systems</li>
+                        <li class="list-group-item">IERG2060 Basic Analog and Digital Circuits</li>
+                        <li class="list-group-item">ENGG2310 Principle of Communication Systems</li>
+                        <li class="list-group-item">IERG3060 Microcontroller and Embedded Systems</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <br>
+                </div>
+            </div>
+
+            <div class="card" style="margin: top 30px;" id="projects">
+                <h4 class="card-header">
+                  Projects
+                  <i class="bi bi-pencil"></i>
+                </h4>
+                <div class="card-body">
+                  <h5 class="card-title">Special title treatment</h5>
+                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                </div>
+            </div>
+
+            <div class="card" style="margin: top 30px;" id="experience">
+                <h4 class="card-header">
+                  Work Experience
+                  <i class="bi bi-briefcase"></i>
+                </h4>
+                <div class="card-body">
+                  <ul class="timeline">
+                    <li class="event reveal" data-date="2022 Sep. -" style="background: #f2f3fe">
+                      <h3>Deloitte China</h3>
+                      <h6>Cyber Risk - Risk Advisory</h6>
+                      <ul class="timeline-item">
+                      </ul>
+                    </li>
+                    <li class="event reveal" data-date="2021 June - 2021 Aug." style="background: #f2f3fe">
+                        <h3>J.P. Morgan Chase & Co.</h3>
+                        <h6>2021 Software Engineer Program – Summer Analyst</h6>
+                        <ul class="timeline-item">
+                          <li>Designed and implemented a framework for business automation with an intern from another team</li>
+                          <li>Wrote test cases and documented the framework to ensure it can be brought into operation</li>
+                          <li>activities such as Secure Code Warrior (2nd runner up in APAC intern tournament) and senior speaker series</li>
+                        </ul>
+                    </li>
+                    <li class="event reveal" data-date="2019 Dec. - 2021 Sep." style="background: #f2f3fe">
+                        <h3>STEM Accelerator Limited</h3>
+                        <h6>Part-time STEM Instructor</h6>
+                        <ul class="timeline-item">
+                          <li>Instructed children ages ranged between 7 – 13 on STEM knowledge using different platforms, including Scratch, mBot, Minecraft Modding, and App Inventor</li>
+                          <li>Explained knowledge on programming (e.g., control flow, using open-source data), mathematics (e.g., coordination, inequality), and science (e.g., physical phenomenon) in Cantonese or English</li>
+                          <li>Assisted Children in creating their final project after one semester</li>
+                        </ul>
+                    </li>
+                    <li class="event reveal" data-date="2020 Dec. - 2021 Jan." style="background: #f2f3fe">
+                        <h3>STEM Accelerator Limited</h3>
+                        <h6>Winter Intern</h6>
+                        <ul class="timeline-item">
+
+                        </ul>
+                    </li>
+                    <li class="event reveal" data-date="2019 June - 2019 Aug." style="background: #f2f3fe">
+                        <h3>The Chinese University of Hong Kong</h3>
+                        <h6>Department of Electronic Engineering - Lab Student Helper</h6>
+                        <ul class="timeline-item">
+                          <li>Assisted lecturer in drafting lab manual for undergraduate level course ELEG2201 – Digital Circuits and Computing System</li>
+                          <li>Collaborated with lab technicians and designed lab materials for students and teaching assistances</li>
+                        </ul>
+                    </li>
+                </ul>
+                </div>
+            </div>
+
+            <div class="card" style="margin: top 30px;" id="skills">
+              <h4 class="card-header">
+                Skills
+              </h4>
+              <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              </div>
+            </div>
+
+            <div class="card" style="margin: top 30px;" id="activity">
+                <h4 class="card-header">
+                  Extra-Curricular Activity
+                </h4>
+                <div class="card-body">
+                  <h5 class="card-title">Special title treatment</h5>
+                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                </div>
+            </div>
+
+            <div class="card" style="margin: top 30px;" id="contact">
+                <h4 class="card-header">
+                  Contact
+                  <i class="bi bi-person"></i>
+                </h4>
+                <div class="card-body">
+                  <h5 class="card-title">Special title treatment</h5>
+                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top bg-dark">
+              <div class="col-md-4 d-flex align-items-center">
+                <span class="mb-3 mb-md-0 text-muted" style="margin-left:20">&copy; 2022 Mak Sui Ling Angela</span>
+              </div>
+          
+              <ul class="nav col-md-4 justify-content-end list-unstyled d-flex" style="margin-right:20">
+                <li class="ms-3"><a class="text-muted" target="_blank" href="https://www.linkedin.com/in/angelalamak/"><i class="bi bi-linkedin"></i></a></li>
+              </ul>
+            </footer>
+        </div>
+          
+    </body>
+
+    <script>
+      var coll = document.getElementsByClassName("collapsible");
+      var i;
+      
+      for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+          this.classList.toggle("active");
+          var content = this.nextElementSibling;
+          if (content.style.display === "block") {
+            content.style.display = "none";
+          } else {
+            content.style.display = "block";
+          }
+        });
+      }
+
+      function reveal() {
+        var reveals = document.querySelectorAll(".reveal");
+
+        for (var i = 0; i < reveals.length; i++) {
+          var windowHeight = window.innerHeight;
+          var elementTop = reveals[i].getBoundingClientRect().top;
+          var elementVisible = 150;
+
+          if (elementTop < windowHeight - elementVisible) {
+            reveals[i].classList.add("active");
+          } else {
+            reveals[i].classList.remove("active");
+          }
+        }
+      }
+
+      window.addEventListener("scroll", reveal);
+    </script>
+</html>
