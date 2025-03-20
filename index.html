@@ -154,12 +154,11 @@
             .then(data => {
                 console.log(data); // Use the data as needed
                 // Example: Display the questions on your quiz page
+                quizData = data;
             })
             .catch(error => {
                 console.error('There was a problem with the fetch operation:', error);
             });
-
-        console.log(quizData);
 
         let currentQuestion = 0;
         let score = 0;
