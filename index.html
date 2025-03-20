@@ -144,6 +144,9 @@
 
     <script>
         var quizData = {};
+        let currentQuestion = 0;
+        let score = 0;
+        let userAnswers = [];
         fetch('plgi_mc.json') // Path to your JSON file
             .then(response => {
                 if (!response.ok) {
@@ -156,9 +159,6 @@
                 // Example: Display the questions on your quiz page
                 quizData = data;
                 // Initialize quiz
-                let currentQuestion = 0;
-                let score = 0;
-                let userAnswers = [];
                 showQuestion();
             })
             .catch(error => {
