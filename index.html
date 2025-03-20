@@ -155,14 +155,15 @@
                 console.log(data); // Use the data as needed
                 // Example: Display the questions on your quiz page
                 quizData = data;
+                // Initialize quiz
+                let currentQuestion = 0;
+                let score = 0;
+                let userAnswers = [];
+                showQuestion();
             })
             .catch(error => {
                 console.error('There was a problem with the fetch operation:', error);
             });
-
-        let currentQuestion = 0;
-        let score = 0;
-        let userAnswers = [];
 
         const elements = {
             questionNumber: document.querySelector('.question-number'),
@@ -262,9 +263,6 @@
                 <button onclick="location.reload()">重新測驗</button>
             `;
         }
-
-        // Initialize quiz
-        showQuestion();
     </script>
 </body>
 
