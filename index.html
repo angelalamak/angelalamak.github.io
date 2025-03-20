@@ -156,8 +156,7 @@
             })
             .then(data => {
                 console.log(data); // Use the data as needed
-                // Example: Display the questions on your quiz page
-                quizData = data;
+                quizData = shuffleArray([...data.questions])
                 // Initialize quiz
                 showQuestion();
             })
@@ -176,6 +175,13 @@
             questionContainer: document.querySelector('.question-container')
         };
 
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
         function showQuestion() {
             const question = quizData.questions[currentQuestion];
             elements.questionNumber.textContent = `問題 ${currentQuestion + 1}/${quizData.questions.length}`;
