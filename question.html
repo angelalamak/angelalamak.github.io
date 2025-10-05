@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>救生員測驗練習</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="question-container">
+            <div class="question-number"></div>
+            <div class="question-text"></div>
+            <ul class="options-list"></ul>
+            <div class="explanation"></div>
+            <div class="navigation">
+                <button id="prevBtn" onclick="prevQuestion()" disabled>上一題</button>
+                <button id="nextBtn" onclick="nextQuestion()" disabled>下一題</button>
+            </div>
+        </div>
+        <div class="results" style="display: none;"></div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>
