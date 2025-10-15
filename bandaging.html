@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>急救（包紥）</title>
+    <link rel="stylesheet" href="./styles/flipping-card.css" />
+
+</head>
+
+<body>
+    <div style="text-align: center;">
+        <h1>急救（包紥）</h1>
+        <p>請選擇題號 (1-20)</p>
+        <div>
+            <input type="number" id="questionNumber" min="1" max="20" value="1"></input>
+            <button type="button" class="btn btn-primary" onclick="randomQuestion(20)">隨機抽取</button>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="loadQuestion(document.querySelector('#questionNumber').value)">確定</button>
+    </div>
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <h4 id="question">題目</h4>
+                <p id="description-1"></p>
+                <p id="description-2"></p>
+            </div>
+            <div class="flip-card-back">
+                <p id="description-answer-1"></p>
+                <p id="description-answer-2"></p>
+                <p id="answer"></p>
+            </div>
+        </div>
+    </div>
+    <script src="./scripts/bandaging-card.js"></script>
+</body>
