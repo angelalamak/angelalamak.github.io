@@ -1,4 +1,6 @@
 let questions = [];
+const flipCard = document.querySelector('.flip-card');
+const flipCardInner = document.querySelector('.flip-card-inner');
 
 async function fetchQuestions() {
     try {
@@ -14,11 +16,11 @@ async function fetchQuestions() {
     }
 }
 
-
 function randomQuestion(max) {
     let questionNumber = Math.floor(Math.random() * max) + 1;
     document.querySelector('#questionNumber').value = questionNumber;
-    
+    loadQuestion(questionNumber);
+    flipCardInner.classList.remove('flip');
 }
 
 function loadQuestion(questionNumber) {
@@ -30,6 +32,7 @@ function loadQuestion(questionNumber) {
     document.querySelector('#description-answer-1').innerHTML = questions[questionNumber].answer[0];
     document.querySelector('#description-answer-2').innerHTML = questions[questionNumber].answer[1];
     document.querySelector('#answer').innerHTML = questions[questionNumber].answer[2];
+    flipCardInner.classList.remove('flip');
 
 }
 
@@ -37,9 +40,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     await fetchQuestions();
     loadQuestion(1);
 });
-
-const flipCard = document.querySelector('.flip-card');
-const flipCardInner = document.querySelector('.flip-card-inner');
 
 flipCard.addEventListener('click', () => {
     flipCardInner.classList.toggle('flip');
