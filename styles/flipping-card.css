@@ -1,3 +1,10 @@
+/* body {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    height: 100vh;
+} */
+
 .flip-card {
   background-color: transparent;
   width: 400px;
